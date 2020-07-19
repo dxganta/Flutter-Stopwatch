@@ -15,7 +15,7 @@ class _FlutterStopWatchState extends State<FlutterStopWatch> {
   String minutesStr = '00';
   String secondsStr = '00';
 
-  Stream<int> myStopWatchTimer() {
+  Stream<int> stopWatchStream() {
     StreamController<int> streamController;
     Timer timer;
     Duration timerInterval = Duration(seconds: 1);
@@ -74,7 +74,7 @@ class _FlutterStopWatchState extends State<FlutterStopWatch> {
                   padding:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
                   onPressed: () {
-                    timerStream = myStopWatchTimer();
+                    timerStream = stopWatchStream();
                     timerSubscription = timerStream.listen((int newTick) {
                       setState(() {
                         hoursStr = ((newTick / (60 * 60)) % 60)
